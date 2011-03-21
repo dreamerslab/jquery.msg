@@ -259,12 +259,12 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
 
 #### unblock
 - description: manually unblock the screen
-- syntax: $.msg( 'unblock', microSecond, msgID ); Second argument is the delay time to unblock the screen. It has to be integer, default value is 0.
+- syntax: $.msg( 'unblock', microSecond, msgID ); 'microSecond' is the delay time to unblock the screen. It has to be integer, default value is 0. pass 'msgID' argument to execute specific 'beforeUnblock' event handler
 - sample code
 
 <!-- -->
     
-    $.msg( 'unblock' );
+    $.msg( 'unblock', 3000, 1 );
 
 ## Theme
 All styles are separate from js files in jquery.msg.css. Default themes use [css3pie](http://css3pie.com/) to apply border-radius and box-shadow to IE. You can easily edit or add your custom theme.

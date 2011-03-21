@@ -217,7 +217,7 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
     $.msg({ 
       autoUnblock : false,
       afterBlock : function(){
-        $.getJSON('ajax/test.json', function( rsp ){
+        $.getJSON('msg/reply.json', function( rsp ){
           $.msg( 'replace', rsp );
       } 
     });

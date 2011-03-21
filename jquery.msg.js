@@ -80,6 +80,7 @@
       content : "Please wait..." ,
       fadeIn : 200,
       fadeOut : 300,
+      bgPath : '/img/',
       // default theme
       klass : 'black-on-white',
       // jquery methodds, can be appendTo, after, before...
@@ -96,7 +97,7 @@
     // for ie fade in trans we have to use img instead of  div
     $overlay = $(
       '<div id="jquery-msg-overlay" class="' + configs.klass + '" style="position:absolute; z-index:' + configs.z + '; top:0px; right:0px; left:0px; height:' + $( doc ).height() + 'px;">' +
-        '<img src="/img/blank.gif" id="jquery-msg-bg" style="width: 100%; height: 100%; top: 0px; left: 0px;"/>' +
+        '<img src="' + configs.bgPath + 'blank.gif" id="jquery-msg-bg" style="width: 100%; height: 100%; top: 0px; left: 0px;"/>' +
         '<div id="jquery-msg-content" class="jquery-msg-content" style="position:absolute;">' +
           configs.content +
         '</div>' +

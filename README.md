@@ -9,6 +9,7 @@ A jQuery BlockUI alternative plugin.
 ## Requires
   - jQuery 1.2.6+
   - [jQuery center plugin](https://github.com/dreamerslab/jquery.center) v1.0.0+
+  - [CSS3PIE](http://css3pie.com/)( for box-shadow and border-radius in IE. Remove it if your custom theme does not need these styles )
 
 ## Browser Compatibility
   - [Firefox](http://mzl.la/RNaI) 2.0+
@@ -38,7 +39,18 @@ A jQuery BlockUI alternative plugin.
 <!-- -->
 
     $.msg({ autoUnblock : false });
-    
+
+#### bgPath
+- description: background image for the overlay
+- data type: 'string'
+- default value: '/img/'
+- possible value: '/images/', '', '/' ...
+- sample code
+
+<!-- -->
+
+    $.msg({ bgPath : '/' });
+
 #### center
 - description: options for jQuery center plugin
 - data type: object
@@ -51,7 +63,6 @@ A jQuery BlockUI alternative plugin.
     $.msg({ 
       center : {
         topPercentage : 0.5
-        border : '1px solid #cccccc'
       }
     });
 
@@ -66,7 +77,8 @@ A jQuery BlockUI alternative plugin.
 
     $.msg({ 
       css : {
-        background : blue
+        background : blue,
+        border : '1px solid #cccccc'
       }
     });
 
@@ -90,7 +102,7 @@ A jQuery BlockUI alternative plugin.
 <!-- -->
 
     $.msg({ 
-      content : '<img src="loading.gif"/> Loading images, please wait...'
+      content : '<img src="loading.gif"/> Sending mail :)'
     });
 
 #### fadeIn
@@ -114,7 +126,7 @@ A jQuery BlockUI alternative plugin.
     $.msg({ fadeOut : 200 });
 
 #### klass
-- description: extra class to message content, separate multiple class with space
+- description: extra class to message content, separate multiple class with space. use this option to apply custom theme
 - data type: string
 - default value: 'black-on-white'
 - example value: 'round-corner shadow'
@@ -136,7 +148,7 @@ A jQuery BlockUI alternative plugin.
     $.msg({ method : 'insertAfter' });
 
 #### target
-- description: the target DOM element that 
+- description: the target DOM element that the message appendTo( or 'prependTo', 'insertAfter', 'insertBefore')
 - data type: string
 - default value: 'body'
 - example value: '#layer', '#content', '#footer .nav'
@@ -189,7 +201,7 @@ A jQuery BlockUI alternative plugin.
 
 <!-- -->
     
-    // clear all input value before msg unblock
+    // clear all input value before screen unblock
     $.msg({ 
       beforeUnblock : function(){
         $( 'input' ).val( '' );
@@ -215,6 +227,18 @@ A jQuery BlockUI alternative plugin.
 <!-- -->
     
     $.msg( 'unblock' );
+
+## Theme
+All styles are separate from js files in jquery.msg.css. Default themes use [css3pie](http://css3pie.com/) to apply border-radius and box-shadow to IE.
+
+#### Default HTML layout
+
+    <div id="jquery-msg-overlay" class="black-on-white" style="position:absolute; z-index:1000; top:0px; right:0px; left:0px;">
+      <img src="blank.gif" id="jquery-msg-bg" style="width: 100%; height: 100%; top: 0px; left: 0px;"/>
+      <div id="jquery-msg-content" class="jquery-msg-content" style="position:absolute;">
+        Please wait...
+      </div>
+    </div>
 
 ## Demo
 Please see demo.html 

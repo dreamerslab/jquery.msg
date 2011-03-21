@@ -7,7 +7,7 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
 
 
 ## Requires
-  - jQuery 1.2.6+
+  - jQuery 1.3.0+
   - [jQuery center plugin](https://github.com/dreamerslab/jquery.center) v1.0.0+
   - [CSS3PIE](http://css3pie.com/)( for box-shadow and border-radius in IE. Remove it if your custom theme does not need these styles )
 
@@ -20,6 +20,7 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
 
 ## Installation
   - First, make sure you are using valid [DOCTYPE](http://bit.ly/hQK1Rk)
+  - copy blank.gif to your image folder and set the path. ex. `$.msg({ bgPath : '/images/' });`
   - Include nessesary JS files
 
 <!-- -->
@@ -29,8 +30,9 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
       <script type="text/javascript" src="path-to-file/jquery.msg.js"></script>
   
   - Include CSS file
-  
+
 <!-- -->
+
       <link media="screen" href="path-to-file/jquery.msg.css" rel="stylesheet" type="text/css">
 
 ## Options
@@ -49,8 +51,8 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
 #### bgPath
 - description: background image for the overlay
 - data type: 'string'
-- default value: '/img/'
-- possible value: '/images/', '', '/' ...
+- default value: ''
+- possible value: '/images/', '/img/', '/' ...
 - sample code
 
 <!-- -->
@@ -88,7 +90,7 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
       }
     });
 
-#### clickUblock
+#### clickUnblock
 - description: click the overlay to unblock the screen
 - data type: bool
 - default value: true
@@ -97,7 +99,7 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
 
 <!-- -->
 
-    $.msg({ clickUblock : false });
+    $.msg({ clickUnblock : false });
 
 #### content
 - description: the message content
@@ -152,6 +154,25 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
 <!-- -->
 
     $.msg({ method : 'insertAfter' });
+
+#### msgID
+- description: give this msg a ID. This is useful when you want to call a specific beforeUnblock event handler somewhere outside this msg
+- data type: integer
+- possible value: 1, 2, 3 ... must be greater than 0 
+- sample code
+
+<!-- -->
+    
+    // set up a message with a ID
+    $.msg({ 
+      msgID : 1,
+      beforeUnblock : function(){
+        // do something here
+      }
+    });
+    
+    // call to unblock the screen and execute the beforeUnblock event handler with msgID = 1
+    $.msg( 'unblock', 3000, 1 );
 
 #### target
 - description: the target DOM element that the message appendTo( or 'prependTo', 'insertAfter', 'insertBefore')
@@ -217,6 +238,16 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
 
 ## Methods
 
+#### overwriteGlobal
+- description: set global options for all `$.msg()`
+- syntax: $.msg( 'overwriteGlobal', name, config ); 'name' has to be string, and can be any options, methods or events that mentioned above; config is the value for the 'name'( option )
+- sample code
+
+<!-- -->
+    
+    // use new-cooler-theme for all messages
+    $.msg( 'overwriteGlobal', 'klass', 'new-cooler-theme' );
+
 #### replace
 - description: replace message content
 - syntax: $.msg( 'replace', content ); content has to be string
@@ -228,6 +259,7 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
 
 #### unblock
 - description: manually unblock the screen
+- syntax: $.msg( 'unblock', microSecond, msgID ); Second argument is the delay time to unblock the screen. It has to be integer, default value is 0.
 - sample code
 
 <!-- -->

@@ -4,94 +4,118 @@
 * Version: 1.0.0
 *
 * Requires: 
-* jQuery 1.2.6+, 
+* jQuery 1.3.0+, 
 * jQuery Center plugin 1.0.0+ https://github.com/dreamerslab/jquery.center
 */
 // wrap all the code in an anonymous function to prevent global vars
 ;( function( $, doc ){
 
-  // a higher scope to store the user configs for private methods to access
-  var configs,
+  // global configs to be use accross the whole page
+  var globalConfigs = {},
+  
+  // global var to store the auto generate msgID
+  msgID = 0,
+  
+  // global var to store the setTimeout function,
+  // it would be call later with clearTimeout
+  autoUnblock,
 
-  blockID = 0,
-
-  unblockID = 0,
-
-  // a var to hold the beforeUnblock event handler
-  beforeUnblock = function(){},
-
-  // private methods
-  _ = {
-    // private unblock method
-    unblock : function(){
-      if( blockID - unblockID === 1 ){
-        // remove msg after fade out
-        $overlay = $( '#jquery-msg-overlay' ).fadeOut( configs.fadeOut, function(){
-          // callback
-          beforeUnblock( $overlay );
-          $overlay.remove();
-        });
-        unblockID = blockID;
-      }
-    }
-  },
-
-  publicMethods = {
-    // unblock the screen
-    unblock : function( ms ){
-      // default unblock delay is 0 ms
-      var _ms = ms === undefined ? 0 : ms;
-      setTimeout( function(){
-        _.unblock();
-      }, _ms );
-    },
-    // replace current content in the msg
-    replace : function( content ){
-      // check if the to be replaced content exist
-      // and make sure it's a string
-      if( content === undefined && typeof( content ) === 'string' ){
-        throw '$.msg(\'replace\') error: second argument is undefined or is not a string';
-      }
-      // replace old contant with new content and set the msg box to center
-      $( '#jquery-msg-content' ).empty().
-        html( content ).
-        center();
-    }
-  };
+  // a global var to store the beforeUnblock event handler for each msg
+  beforeUnblock = [ function(){} ];
 
   // the jquery plugin
   $.msg = function( options, extra ){
-
-    var $overlay, $content;
+    var $content, $overlay, configs, _, publicMethods;
     
-    // merge default setting with user options
-    // IMPORTANT!! do not use 'var'
-    // the higher scope configs has to be over written here
-    // for private method to access the user configs
+    // merge default setting with globalConfigs
     configs = $.extend({
       // after block event handler
       afterBlock : function(){},
       autoUnblock : true,
+      
       // options for $.center( center ) plugin
       center : { topPercentage : 0.4 },
       css : {},
+      
       // click overlay to unblock
-      clickUblock : true,
+      clickUnblock : true,
       content : "Please wait..." ,
       fadeIn : 200,
       fadeOut : 300,
-      bgPath : '/img/',
+      bgPath : '',
+      
       // default theme
       klass : 'black-on-white',
+      
       // jquery methodds, can be appendTo, after, before...
       method : 'appendTo',
+      
       // DOM target to be insert into the msg
       target : 'body',
+      
       // default auto unblock count down
       timeOut : 2400,
+      
       // default z-index of the overlay
       z : 1000
-    }, options );
+
+    }, globalConfigs );
+    
+    // merge default setting with user options
+    $.extend( configs, options );
+    
+    // private methods
+    _ = {
+      // private unblock method
+      unblock : function(){
+        // remove msg after fade out
+        $overlay = $( '#jquery-msg-overlay' ).fadeOut( configs.fadeOut, function(){
+
+          // beforeUnblock event callback
+          beforeUnblock[ configs.msgID ]( $overlay );
+          $overlay.remove();
+        });
+        
+        // clear the auto unblock function
+        clearTimeout( autoUnblock );
+      }
+    };
+
+    publicMethods = {
+      
+      // unblock the screen
+      unblock : function( ms, _msgID ){
+        
+        // default unblock delay is 0 ms
+        var _ms = ms === undefined ? 0 : ms;
+        
+        // set msgID
+        configs.msgID = _msgID === undefined ? msgID : _msgID;
+        
+        setTimeout( function(){
+          _.unblock();
+        }, _ms );
+      },
+      
+      // replace current content in the msg
+      replace : function( content ){
+        
+        // check if the to be replaced content exist
+        // and make sure it's a string
+        if( content === undefined && typeof( content ) === 'string' ){
+          throw '$.msg(\'replace\') error: second argument is undefined or is not a string';
+        }
+
+        // replace old contant with new content and set the msg box to center
+        $( '#jquery-msg-content' ).empty().
+          html( content ).
+          center( configs.center );
+      },
+      
+      overwriteGlobal : function( name, config ){
+        globalConfigs[ name ] = config;
+      }
+    };
 
     // DOM el
     // for ie fade in trans we have to use img instead of  div
@@ -103,19 +127,33 @@
         '</div>' +
       '</div>'
     );
-
+    
+    // generate msgID
+    msgID--;
+    
+    // if not specified use the auto generate msgID
+    configs.msgID = configs.msgID === undefined ? 
+      msgID : 
+      configs.msgID;
+    
     // check if the beforeUnblock event handler is defined in the user option
-    // if it does save it to higher scope to be execute later
-    if( configs.beforeUnblock ) beforeUnblock = configs.beforeUnblock;
+    // otherwise assign it a empty function
+    beforeUnblock[ configs.msgID ] = configs.beforeUnblock === undefined ? 
+      function(){} :
+      configs.beforeUnblock;
 
     // if options is a string
     // execute public method
     if( typeof( options ) === 'string' ){
-      publicMethods[ options ]( extra );
+      publicMethods[ options ].apply( publicMethods, $.isArray( extra ) ? extra : [ extra ]);
     }else{
+      
+      // preload background
+      $( '<img />' ).attr( 'src', configs.bgPath + 'blank.gif' );
+      
       // configs.method can be appendTo, after ...
       $overlay[ configs.method ]( configs.target );
-
+      
       // set content ( msg ) to center before hiding
       // and apply user option css if any
       $content = $( '#jquery-msg-content' ).
@@ -128,14 +166,15 @@
       $overlay.
         hide().
         fadeIn( configs.fadeIn, function(){
-          $content.fadeIn( 'fast' );
-
-          blockID++;
-
-          configs.afterBlock( $overlay );
+          $content.fadeIn( 'fast' ).children().andSelf().bind( 'click', function( e ){
+            e.stopPropagation();
+          });
+          
+          // execute afterBlock callback
+          configs.afterBlock.call( publicMethods, $overlay );
 
           // apply click unblock if the config set to true
-          if( configs.clickUblock ){
+          if( configs.clickUnblock ){
             $overlay.bind( 'click', function( e ){
               e.stopPropagation();
               _.unblock();
@@ -144,7 +183,7 @@
           
           // apply auto unblock if the config set to true
           if( configs.autoUnblock ){
-            setTimeout( _.unblock , configs.timeOut );
+            autoUnblock = setTimeout( _.unblock , configs.timeOut );
           }
         });
     }

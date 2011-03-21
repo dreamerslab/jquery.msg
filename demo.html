@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link media="screen" href="jquery.msg.css" rel="stylesheet" type="text/css">
+    <title>jQuery MSG Plugin Demo</title>
+    <style type="text/css">
+      h1{
+        text-align : center;
+      }
+      #wrap{
+        width: 880px;
+        margin: 0 auto 50px;
+      }
+      #info{
+        text-align: center;
+        margin: 50px 0 0;
+      }
+      .btn{
+        background: #cccccc;
+        float: left;
+        display: inline;
+        font-family: arial;
+        font-size: 12px;
+        font-weight: bolder;
+        padding: 3px 7px;
+        margin: 0 8px 0 0;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrap">
+      <h1>
+        jQuery MSG Plugin Demo
+      </h1>
+      <div class="play-ground">
+        <h3></h3>
+        <div id="default" class="btn">Click me</div>
+        <pre>
+          $.msg();
+        </pre>
+      </div>
+
+      <h3 id="info">
+        Demo provides by <a href="http://dreamerslab.com/">DreamersLab</a>
+      </h3>
+    </div>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.center.min.js"></script>
+    <script type="text/javascript" src="jquery.msg.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+      // wrap everything in document ready event
+      $( function(){
+        
+        $( '#default' ).bind( 'click', function(){
+          $.msg({ bgPath : '' });
+        });
+        
+      });
+      
+    </script>
+    <script type="text/javascript" charset="utf-8">
+      // google analytics
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-20960410-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  </body>
+</html>

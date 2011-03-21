@@ -3,7 +3,7 @@
 A jQuery BlockUI alternative plugin.
 
 ## Description
-
+This is a simple jQuery plugin to show messages. The styles are all in jquery.msg.css file, therefore it is very easy to customize the look.
 
 
 ## Requires
@@ -25,7 +25,13 @@ A jQuery BlockUI alternative plugin.
 <!-- -->
 
       <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+      <script type="text/javascript" src="path-to-file/jquery.center.js"></script>
       <script type="text/javascript" src="path-to-file/jquery.msg.js"></script>
+  
+  - Include CSS file
+  
+<!-- -->
+      <link media="screen" href="path-to-file/jquery.msg.css" rel="stylesheet" type="text/css">
 
 ## Options
 
@@ -229,7 +235,7 @@ A jQuery BlockUI alternative plugin.
     $.msg( 'unblock' );
 
 ## Theme
-All styles are separate from js files in jquery.msg.css. Default themes use [css3pie](http://css3pie.com/) to apply border-radius and box-shadow to IE.
+All styles are separate from js files in jquery.msg.css. Default themes use [css3pie](http://css3pie.com/) to apply border-radius and box-shadow to IE. You can easily edit or add your custom theme.
 
 #### Default HTML layout
 

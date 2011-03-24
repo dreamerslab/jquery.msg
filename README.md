@@ -38,33 +38,33 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
 ## Options
 
 #### autoUnblock
-- description: auto unblock the screen
-- data type: bool
-- default value: true
-- possible value: true, false
-- sample code
+  - description: auto unblock the screen
+  - data type: bool
+  - default value: true
+  - possible value: true, false
+  - sample code
 
 <!-- -->
 
     $.msg({ autoUnblock : false });
 
 #### bgPath
-- description: background image for the overlay
-- data type: 'string'
-- default value: ''
-- possible value: '/images/', '/img/', '/' ...
-- sample code
+  - description: background image for the overlay
+  - data type: 'string'
+  - default value: ''
+  - possible value: '/images/', '/img/', '/' ...
+  - sample code
 
 <!-- -->
 
     $.msg({ bgPath : '/' });
 
 #### center
-- description: options for jQuery center plugin
-- data type: object
-- default value: { topPercentage : 0.4 }
-- possible value: please check [jQuery center plugin](https://github.com/dreamerslab/jquery.center) for detail
-- sample code
+  - description: options for jQuery center plugin
+  - data type: object
+  - default value: { topPercentage : 0.4 }
+  - possible value: please check [jQuery center plugin](https://github.com/dreamerslab/jquery.center) for detail
+  - sample code
 
 <!-- -->
 
@@ -75,11 +75,11 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
     });
 
 #### css
-- description: extra css style for the msg content
-- data type: float
-- default value: {} (none)
-- possible value: please check [jquery.css()](http://api.jquery.com/css/)
-- sample code
+  - description: extra css style for the msg content
+  - data type: float
+  - default value: {} (none)
+  - possible value: please check [jquery.css()](http://api.jquery.com/css/)
+  - sample code
 
 <!-- -->
 
@@ -91,21 +91,21 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
     });
 
 #### clickUnblock
-- description: click the overlay to unblock the screen
-- data type: bool
-- default value: true
-- possible value: true, false
-- sample code
+  - description: click the overlay to unblock the screen
+  - data type: bool
+  - default value: true
+  - possible value: true, false
+  - sample code
 
 <!-- -->
 
     $.msg({ clickUnblock : false });
 
 #### content
-- description: the message content
-- data type: string
-- default value: "Please wait..."
-- sample code
+  - description: the message content
+  - data type: string
+  - default value: "Please wait..."
+  - sample code
 
 <!-- -->
 
@@ -114,52 +114,52 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
     });
 
 #### fadeIn
-- description: message fade in speed
-- data type: integer
-- default value: 200
-- sample code
+  - description: message fade in speed
+  - data type: integer
+  - default value: 200
+  - sample code
 
 <!-- -->
 
     $.msg({ fadeIn : 500 });
 
 #### fadeOut
-- description: message fade out speed
-- data type: integer
-- default value: 300
-- sample code
+  - description: message fade out speed
+  - data type: integer
+  - default value: 300
+  - sample code
 
 <!-- -->
 
     $.msg({ fadeOut : 200 });
 
 #### klass
-- description: extra class to message content, separate multiple class with space. use this option to apply custom theme
-- data type: string
-- default value: 'black-on-white'
-- example value: 'round-corner shadow'
-- sample code
+  - description: extra class to message content, separate multiple class with space. use this option to apply custom theme
+  - data type: string
+  - default value: 'black-on-white'
+  - example value: 'round-corner shadow'
+  - sample code
 
 <!-- -->
 
     $.msg({ klass : 'round-corner shadow' });
 
 #### method
-- description: jquery manipulation method to determinate how you want the message to appear
-- data type: string
-- default value: 'appendTo'
-- possible value: 'appendTo', 'prependTo', 'insertAfter', 'insertBefore'
-- sample code
+  - description: jquery manipulation method to determinate how you want the message to appear
+  - data type: string
+  - default value: 'appendTo'
+  - possible value: 'appendTo', 'prependTo', 'insertAfter', 'insertBefore'
+  - sample code
 
 <!-- -->
 
     $.msg({ method : 'insertAfter' });
 
 #### msgID
-- description: give this msg a ID. This is useful when you want to call a specific beforeUnblock event handler somewhere outside this msg
-- data type: integer
-- possible value: 1, 2, 3 ... must be greater than 0 
-- sample code
+  - description: give this msg a ID. This is useful when you want to call a specific beforeUnblock event handler somewhere outside this msg
+  - data type: integer
+  - possible value: 1, 2, 3 ... must be greater than 0 
+  - sample code
 
 <!-- -->
     
@@ -175,31 +175,31 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
     $.msg( 'unblock', 3000, 1 );
 
 #### target
-- description: the target DOM element that the message appendTo( or 'prependTo', 'insertAfter', 'insertBefore')
-- data type: string
-- default value: 'body'
-- example value: '#layer', '#content', '#footer .nav'
-- sample code
+  - description: the target DOM element that the message appendTo( or 'prependTo', 'insertAfter', 'insertBefore')
+  - data type: string
+  - default value: 'body'
+  - example value: '#layer', '#content', '#footer .nav'
+  - sample code
 
 <!-- -->
 
     $.msg({ method : '#layer' });
 
 #### timeOut
-- description: screen block time out
-- data type: integer
-- default value: 2400
-- sample code
+  - description: screen block time out
+  - data type: integer
+  - default value: 2400
+  - sample code
 
 <!-- -->
 
     $.msg({ timeOut : 5000 });
 
 #### z
-- description: the z-index of jQuery MSG element
-- data type: integer
-- default value: 1000
-- sample code
+  - description: the z-index of jQuery MSG element
+  - data type: integer
+  - default value: 1000
+  - sample code
 
 <!-- -->
 
@@ -208,8 +208,8 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
 ## Events
 
 #### afterBlock
-- description: callback function for the afterBlock event
-- sample code
+  - description: callback function for the afterBlock event
+  - sample code
 
 <!-- -->
 
@@ -223,8 +223,8 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
     });
 
 #### beforeUnblock
-- description: callback function for the beforeUnblock event
-- sample code
+  - description: callback function for the beforeUnblock event
+  - sample code
 
 <!-- -->
     
@@ -239,9 +239,9 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
 ## Methods
 
 #### overwriteGlobal
-- description: set global options for all `$.msg()`
-- syntax: $.msg( 'overwriteGlobal', name, config ); 'name' has to be string, and can be any options, methods or events that mentioned above; config is the value for the 'name'( option )
-- sample code
+  - description: set global options for all `$.msg()`
+  - syntax: $.msg( 'overwriteGlobal', name, config ); 'name' has to be string, and can be any options, methods or events that mentioned above; config is the value for the 'name'( option )
+  - sample code
 
 <!-- -->
     
@@ -249,18 +249,18 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
     $.msg( 'overwriteGlobal', 'klass', 'new-cooler-theme' );
 
 #### replace
-- description: replace message content
-- syntax: $.msg( 'replace', content ); content has to be string
-- sample code
+  - description: replace message content
+  - syntax: $.msg( 'replace', content ); content has to be string
+  - sample code
 
 <!-- -->
     
     $.msg( 'replace', '<p>This is the replaced content</>' );
 
 #### unblock
-- description: manually unblock the screen
-- syntax: $.msg( 'unblock', microSecond, msgID ); 'microSecond' is the delay time to unblock the screen. It has to be integer, default value is 0. pass 'msgID' argument to execute specific 'beforeUnblock' event handler
-- sample code
+  - description: manually unblock the screen
+  - syntax: $.msg( 'unblock', microSecond, msgID ); 'microSecond' is the delay time to unblock the screen. It has to be integer, default value is 0. pass 'msgID' argument to execute specific 'beforeUnblock' event handler
+  - sample code
 
 <!-- -->
     

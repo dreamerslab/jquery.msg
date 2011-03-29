@@ -1,4 +1,4 @@
-# jQuery Actual Plugin
+# jQuery MSG Plugin
 
 A jQuery BlockUI alternative plugin.
 

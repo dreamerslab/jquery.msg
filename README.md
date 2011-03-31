@@ -76,7 +76,7 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
 
 #### css
   - description: extra css style for the msg content
-  - data type: float
+  - data type: object
   - default value: {} (none)
   - possible value: please check [jquery.css()](http://api.jquery.com/css/)
   - example code

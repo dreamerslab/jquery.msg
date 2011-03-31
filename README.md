@@ -42,7 +42,7 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
   - data type: bool
   - default value: true
   - possible value: true, false
-  - sample code
+  - example code
 
 <!-- -->
 
@@ -53,7 +53,7 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
   - data type: 'string'
   - default value: ''
   - possible value: '/images/', '/img/', '/' ...
-  - sample code
+  - example code
 
 <!-- -->
 
@@ -64,7 +64,7 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
   - data type: object
   - default value: { topPercentage : 0.4 }
   - possible value: please check [jQuery center plugin](https://github.com/dreamerslab/jquery.center) for detail
-  - sample code
+  - example code
 
 <!-- -->
 
@@ -79,13 +79,13 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
   - data type: float
   - default value: {} (none)
   - possible value: please check [jquery.css()](http://api.jquery.com/css/)
-  - sample code
+  - example code
 
 <!-- -->
 
     $.msg({ 
       css : {
-        background : blue,
+        background : 'blue',
         border : '1px solid #cccccc'
       }
     });
@@ -95,7 +95,7 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
   - data type: bool
   - default value: true
   - possible value: true, false
-  - sample code
+  - example code
 
 <!-- -->
 
@@ -105,7 +105,7 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
   - description: the message content
   - data type: string
   - default value: "Please wait..."
-  - sample code
+  - example code
 
 <!-- -->
 
@@ -117,7 +117,7 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
   - description: message fade in speed
   - data type: integer
   - default value: 200
-  - sample code
+  - example code
 
 <!-- -->
 
@@ -127,7 +127,7 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
   - description: message fade out speed
   - data type: integer
   - default value: 300
-  - sample code
+  - example code
 
 <!-- -->
 
@@ -138,7 +138,7 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
   - data type: string
   - default value: 'black-on-white'
   - example value: 'round-corner shadow'
-  - sample code
+  - example code
 
 <!-- -->
 
@@ -149,7 +149,7 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
   - data type: string
   - default value: 'appendTo'
   - possible value: 'appendTo', 'prependTo', 'insertAfter', 'insertBefore'
-  - sample code
+  - example code
 
 <!-- -->
 
@@ -159,7 +159,7 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
   - description: give this msg a ID. This is useful when you want to call a specific beforeUnblock event handler somewhere outside this msg
   - data type: integer
   - possible value: 1, 2, 3 ... must be greater than 0 
-  - sample code
+  - example code
 
 <!-- -->
     
@@ -172,14 +172,14 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
     });
     
     // call to unblock the screen and execute the beforeUnblock event handler with msgID = 1
-    $.msg( 'unblock', 3000, 1 );
+    $.msg( 'unblock', [ 3000, 1 ]);
 
 #### target
   - description: the target DOM element that the message appendTo( or 'prependTo', 'insertAfter', 'insertBefore')
   - data type: string
   - default value: 'body'
   - example value: '#layer', '#content', '#footer .nav'
-  - sample code
+  - example code
 
 <!-- -->
 
@@ -189,7 +189,7 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
   - description: screen block time out
   - data type: integer
   - default value: 2400
-  - sample code
+  - example code
 
 <!-- -->
 
@@ -199,7 +199,7 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
   - description: the z-index of jQuery MSG element
   - data type: integer
   - default value: 1000
-  - sample code
+  - example code
 
 <!-- -->
 
@@ -209,7 +209,7 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
 
 #### afterBlock
   - description: callback function for the afterBlock event
-  - sample code
+  - example code
 
 <!-- -->
 
@@ -224,7 +224,7 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
 
 #### beforeUnblock
   - description: callback function for the beforeUnblock event
-  - sample code
+  - example code
 
 <!-- -->
     
@@ -241,7 +241,7 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
 #### overwriteGlobal
   - description: set global options for all `$.msg()`
   - syntax: $.msg( 'overwriteGlobal', [ name, config ]); 'name' has to be string, and can be any options, methods or events that mentioned above; config is the value for the 'name'( option )
-  - sample code
+  - example code
 
 <!-- -->
     
@@ -251,7 +251,7 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
 #### replace
   - description: replace message content
   - syntax: $.msg( 'replace', content ); content has to be string
-  - sample code
+  - example code
 
 <!-- -->
     
@@ -260,7 +260,7 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
 #### unblock
   - description: manually unblock the screen
   - syntax: $.msg( 'unblock', [ microSecond, msgID ]); 'microSecond' is the delay time to unblock the screen. It has to be integer, default value is 0. pass 'msgID' argument to execute specific 'beforeUnblock' event handler
-  - sample code
+  - example code
 
 <!-- -->
     

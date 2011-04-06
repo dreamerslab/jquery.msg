@@ -276,10 +276,16 @@ All styles are separate from js files in jquery.msg.css. Default themes use [css
       <div id="jquery-msg-content" class="jquery-msg-content" style="position:absolute;">
         Please wait...
       </div>
-    </div>
+    </div> 
 
 ## Demo
-Please see demo.html 
+ - Please see demo.html
+ - Online version please take a look at [this](http://dreamerslab.com/demos/jquery-blockui-alternative-with-jquery-msg-plugin)
+
+## Documentation
+  - There is a syntax highlight version, please see [this post](http://dreamerslab.com/blog/en/jquery-blockui-alternative-with-jquery-msg-plugin/)
+  - For chinese version please go [here](http://dreamerslab.com/blog/tw/jquery-blockui-alternative-with-jquery-msg-plugin/)
+
 
 ## License
 

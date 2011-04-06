@@ -1,7 +1,7 @@
 /*! Copyright 2011, Ben Lin (http://dreamerslab.com/)
 * Licensed under the MIT License (LICENSE.txt).
 *
-* Version: 1.0.0
+* Version: 1.0.1
 *
 * Requires: 
 * jQuery 1.3.0+, 
@@ -147,9 +147,6 @@
     if( typeof( options ) === 'string' ){
       publicMethods[ options ].apply( publicMethods, $.isArray( extra ) ? extra : [ extra ]);
     }else{
-      
-      // preload background
-      $( '<img />' ).attr( 'src', configs.bgPath + 'blank.gif' );
       
       // configs.method can be appendTo, after ...
       $overlay[ configs.method ]( configs.target );

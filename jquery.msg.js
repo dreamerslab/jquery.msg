@@ -1,7 +1,7 @@
 /*! Copyright 2011, Ben Lin (http://dreamerslab.com/)
 * Licensed under the MIT License (LICENSE.txt).
 *
-* Version: 1.0.2
+* Version: 1.0.3
 *
 * Requires: 
 * jQuery 1.3.0+, 
@@ -116,17 +116,6 @@
         globalConfigs[ name ] = config;
       }
     };
-
-    // DOM el
-    // for ie fade in trans we have to use img instead of  div
-    $overlay = $(
-      '<div id="jquery-msg-overlay" class="' + configs.klass + '" style="position:absolute; z-index:' + configs.z + '; top:0px; right:0px; left:0px; height:' + $( doc ).height() + 'px;">' +
-        '<img src="' + configs.bgPath + 'blank.gif" id="jquery-msg-bg" style="width: 100%; height: 100%; top: 0px; left: 0px;"/>' +
-        '<div id="jquery-msg-content" class="jquery-msg-content" style="position:absolute;">' +
-          configs.content +
-        '</div>' +
-      '</div>'
-    );
     
     // generate msgID
     msgID--;
@@ -147,6 +136,17 @@
     if( typeof( options ) === 'string' ){
       publicMethods[ options ].apply( publicMethods, $.isArray( extra ) ? extra : [ extra ]);
     }else{
+      
+      // DOM el
+      // for ie fade in trans we have to use img instead of  div
+      $overlay = $(
+        '<div id="jquery-msg-overlay" class="' + configs.klass + '" style="position:absolute; z-index:' + configs.z + '; top:0px; right:0px; left:0px; height:' + $( doc ).height() + 'px;">' +
+          '<img src="' + configs.bgPath + 'blank.gif" id="jquery-msg-bg" style="width: 100%; height: 100%; top: 0px; left: 0px;"/>' +
+          '<div id="jquery-msg-content" class="jquery-msg-content" style="position:absolute;">' +
+            configs.content +
+          '</div>' +
+        '</div>'
+      );
       
       // configs.method can be appendTo, after ...
       $overlay[ configs.method ]( configs.target );

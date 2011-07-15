@@ -3,6 +3,7 @@
 ## 1.0.4
 
 * Syntax tuning, no morew arrray arguments for `Methods`
+* Fix typo
 
 
 

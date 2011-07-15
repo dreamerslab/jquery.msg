@@ -183,7 +183,7 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
 
 <!-- -->
 
-    $.msg({ method : '#layer' });
+    $.msg({ target : '#layer' });
 
 #### timeOut
   - description: screen block time out

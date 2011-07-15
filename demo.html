@@ -145,30 +145,30 @@
                          '&lt;span id="yes"&gt;Yes&lt;/span&gt;' + 
                          '&lt;span id="no"&gt;no&lt;/span&gt;' + 
                        '&lt;/p&gt;',
-                       afterBlock : function(){
-                         // store 'this' for other scope to use
-                         var self = this;
+              afterBlock : function(){
+                // store 'this' for other scope to use
+                var self = this;
 
-                         // delete user and auto unblock the screen after 1 second
-                         // when click #yes btn
-                         $( '#yes' ).bind( 'click', function(){
+                // delete user and auto unblock the screen after 1 second
+                // when click #yes btn
+                $( '#yes' ).bind( 'click', function(){
 
-                           // self.method is not chainable
-                           self.replace( 'User deleted.' );
-                           self.unblock( 2000 );
-                           // this equals to 
-                           // $.msg( 'replace', 'User deleted.' ).
-                           //   msg( 'unblock', 2000 );
+                  // self.method is not chainable
+                  self.replace( 'User deleted.' );
+                  self.unblock( 2000 );
+                  // this equals to 
+                  // $.msg( 'replace', 'User deleted.' ).
+                  //   msg( 'unblock', 2000 );
 
-                           $( '#the-user' ).empty();
-                         });
+                  $( '#the-user' ).empty();
+                });
 
-                         $( '#no' ).bind( 'click', function(){
+                $( '#no' ).bind( 'click', function(){
 
-                           // this equals to $.msg( 'unblock' );
-                           self.unblock();
-                         });
-                       },
+                  // this equals to $.msg( 'unblock' );
+                  self.unblock();
+                });
+              },
               beforeUnblock : function(){
                 alert( 'This is a callback from beforeUnblock event handler :)' )
               }

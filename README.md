@@ -172,7 +172,7 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
     });
     
     // call to unblock the screen and execute the beforeUnblock event handler with msgID = 1
-    $.msg( 'unblock', [ 3000, 1 ]);
+    $.msg( 'unblock', 3000, 1 );
 
 #### target
   - description: the target DOM element that the message appendTo( or 'prependTo', 'insertAfter', 'insertBefore')
@@ -240,13 +240,13 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
 
 #### overwriteGlobal
   - description: set global options for all `$.msg()`
-  - syntax: $.msg( 'overwriteGlobal', [ name, config ]); 'name' has to be string, and can be any options, methods or events that mentioned above; config is the value for the 'name'( option )
+  - syntax: $.msg( 'overwriteGlobal', name, config ); 'name' has to be string, and can be any options, methods or events that mentioned above; config is the value for the 'name'( option )
   - example code
 
 <!-- -->
     
     // use new-cooler-theme for all messages
-    $.msg( 'overwriteGlobal', [ 'klass', 'new-cooler-theme' ]);
+    $.msg( 'overwriteGlobal', 'klass', 'new-cooler-theme' );
 
 #### replace
   - description: replace message content
@@ -259,12 +259,12 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
 
 #### unblock
   - description: manually unblock the screen
-  - syntax: $.msg( 'unblock', [ microSecond, msgID ]); 'microSecond' is the delay time to unblock the screen. It has to be integer, default value is 0. pass 'msgID' argument to execute specific 'beforeUnblock' event handler
+  - syntax: $.msg( 'unblock', microSecond, msgID ); 'microSecond' is the delay time to unblock the screen. It has to be integer, default value is 0. pass 'msgID' argument to execute specific 'beforeUnblock' event handler
   - example code
 
 <!-- -->
     
-    $.msg( 'unblock', [ 3000, 1 ]);
+    $.msg( 'unblock', 3000, 1 );
 
 ## Theme
 All styles are separate from js files in jquery.msg.css. Default themes use [css3pie](http://css3pie.com/) to apply border-radius and box-shadow to IE. You can easily edit or add your custom theme.

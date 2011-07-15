@@ -1,7 +1,7 @@
 /*! Copyright 2011, Ben Lin (http://dreamerslab.com/)
 * Licensed under the MIT License (LICENSE.txt).
 *
-* Version: 1.0.3
+* Version: 1.0.4
 *
 * Requires: 
 * jQuery 1.3.0+, 
@@ -24,8 +24,11 @@
   beforeUnblock = [ function(){} ];
 
   // the jquery plugin
-  $.msg = function( options, extra ){
-    var $content, $overlay, configs, _, publicMethods;
+  $.msg = function(){
+    var $content, $overlay, options, type, configs, _, publicMethods;
+    
+    options = [].shift.call( arguments );
+    type = {}.toString.call( options );
     
     // merge default setting with globalConfigs
     configs = $.extend({
@@ -61,8 +64,10 @@
 
     }, globalConfigs );
     
-    // merge default setting with user options
-    $.extend( configs, options );
+    if( type !== '[object String]' ){
+      // merge default setting with user options
+      $.extend( configs, options );
+    }
     
     // private methods
     _ = {
@@ -133,8 +138,8 @@
 
     // if options is a string
     // execute public method
-    if( typeof( options ) === 'string' ){
-      publicMethods[ options ].apply( publicMethods, $.isArray( extra ) ? extra : [ extra ]);
+    if( type === '[object String]' ){
+      publicMethods[ options ].apply( publicMethods, arguments );
     }else{
       
       // DOM el

@@ -1,5 +1,11 @@
 # jQuery MSG Plugin CHANGELOG
 
+## 1.0.4
+
+* Syntax tuning, no morew arrray arguments for `Methods`
+
+
+
 ## 1.0.3
 
 * Move cache DOM el position

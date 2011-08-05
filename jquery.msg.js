@@ -1,7 +1,7 @@
 /*! Copyright 2011, Ben Lin (http://dreamerslab.com/)
 * Licensed under the MIT License (LICENSE.txt).
 *
-* Version: 1.0.4
+* Version: 1.0.5
 *
 * Requires: 
 * jQuery 1.3.0+, 
@@ -25,7 +25,7 @@
 
   // the jquery plugin
   $.msg = function(){
-    var $content, $overlay, options, type, configs, _, publicMethods;
+    var $overlay, $content, options, type, configs, _, publicMethods;
     
     options = [].shift.call( arguments );
     type = {}.toString.call( options );
@@ -64,10 +64,8 @@
 
     }, globalConfigs );
     
-    if( type !== '[object String]' ){
-      // merge default setting with user options
-      $.extend( configs, options );
-    }
+    // merge default setting with user options
+    type === '[object Object]' && $.extend( configs, options );
     
     // private methods
     _ = {
@@ -104,13 +102,10 @@
       
       // replace current content in the msg
       replace : function( content ){
-        
-        // check if the to be replaced content exist
-        // and make sure it's a string
-        if( content === undefined && typeof( content ) === 'string' ){
-          throw '$.msg(\'replace\') error: second argument is undefined or is not a string';
+        if({}.toString.call( content ) !== '[object String]' ){
+          throw '$.msg(\'replace\'); error: second argument has to be a string';
         }
-
+        
         // replace old contant with new content and set the msg box to center
         $( '#jquery-msg-content' ).empty().
           html( content ).
@@ -136,14 +131,13 @@
       function(){} :
       configs.beforeUnblock;
 
-    // if options is a string
-    // execute public method
+    // if options is a string execute public method
     if( type === '[object String]' ){
       publicMethods[ options ].apply( publicMethods, arguments );
     }else{
       
       // DOM el
-      // for ie fade in trans we have to use img instead of  div
+      // for ie fade in trans we have to use img instead of div
       $overlay = $(
         '<div id="jquery-msg-overlay" class="' + configs.klass + '" style="position:absolute; z-index:' + configs.z + '; top:0px; right:0px; left:0px; height:' + $( doc ).height() + 'px;">' +
           '<img src="' + configs.bgPath + 'blank.gif" id="jquery-msg-bg" style="width: 100%; height: 100%; top: 0px; left: 0px;"/>' +

@@ -1,7 +1,7 @@
 /*! Copyright 2011, Ben Lin (http://dreamerslab.com/)
 * Licensed under the MIT License (LICENSE.txt).
 *
-* Version: 1.0.5
+* Version: 1.0.6
 *
 * Requires: 
 * jQuery 1.3.0+, 
@@ -170,12 +170,11 @@
           configs.afterBlock.call( publicMethods, $overlay );
 
           // apply click unblock if the config set to true
-          if( configs.clickUnblock ){
+          configs.clickUnblock &&
             $overlay.bind( 'click', function( e ){
               e.stopPropagation();
               _.unblock();
             });
-          }
           
           // apply auto unblock if the config set to true
           if( configs.autoUnblock ){

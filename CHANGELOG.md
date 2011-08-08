@@ -1,8 +1,15 @@
 # jQuery MSG Plugin CHANGELOG
 
+## 1.0.6
+
+* Syntax tuning
+
+
+
 ## 1.0.5
 
 * Fix bug on $.msg('replace') arg type
+
 
 
 ## 1.0.4

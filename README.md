@@ -2,8 +2,23 @@
 
 A jQuery BlockUI alternative plugin.
 
+
+
 ## Description
 This is a simple jQuery plugin to show messages. The styles are all in jquery.msg.css file, therefore it is very easy to customize the look.
+
+
+
+## Demo
+ - Please see demo.html
+ - Live demo please take a look at [this](http://dreamerslab.com/demos/jquery-blockui-alternative-with-jquery-msg-plugin)
+
+
+
+## Documentation
+  - There is a syntax highlight version, please see [this post](http://dreamerslab.com/blog/en/jquery-blockui-alternative-with-jquery-msg-plugin/)
+  - For chinese version please go [here](http://dreamerslab.com/blog/tw/jquery-blockui-alternative-with-jquery-msg-plugin/)
+
 
 
 ## Requires
@@ -11,12 +26,16 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
   - [jQuery center plugin](https://github.com/dreamerslab/jquery.center) v1.0.0+
   - [CSS3PIE](http://css3pie.com/)( for box-shadow and border-radius in IE. Remove it if your custom theme does not need these styles )
 
+
+
 ## Browser Compatibility
   - [Firefox](http://mzl.la/RNaI) 2.0+
   - [Internet Explorer](http://bit.ly/9fMgIQ) 6+
   - [Safari](http://bit.ly/gMhzVR) 3+
   - [Opera](http://bit.ly/fWJzaC) 10.6+
   - [Chrome](http://bit.ly/ePHvYZ) 8+
+
+
 
 ## Installation
   - First, make sure you are using valid [DOCTYPE](http://bit.ly/hQK1Rk)
@@ -28,12 +47,14 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
       <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
       <script type="text/javascript" src="path-to-file/jquery.center.js"></script>
       <script type="text/javascript" src="path-to-file/jquery.msg.js"></script>
-  
+
   - Include CSS file
 
 <!-- -->
 
       <link media="screen" href="path-to-file/jquery.msg.css" rel="stylesheet" type="text/css">
+
+
 
 ## Options
 
@@ -68,7 +89,7 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
 
 <!-- -->
 
-    $.msg({ 
+    $.msg({
       center : {
         topPercentage : 0.5
       }
@@ -83,7 +104,7 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
 
 <!-- -->
 
-    $.msg({ 
+    $.msg({
       css : {
         background : 'blue',
         border : '1px solid #cccccc'
@@ -109,7 +130,7 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
 
 <!-- -->
 
-    $.msg({ 
+    $.msg({
       content : '<img src="loading.gif"/> Sending mail :)'
     });
 
@@ -158,19 +179,19 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
 #### msgID
   - description: give this msg a ID. This is useful when you want to call a specific beforeUnblock event handler somewhere outside this msg
   - data type: integer
-  - possible value: 1, 2, 3 ... must be greater than 0 
+  - possible value: 1, 2, 3 ... must be greater than 0
   - example code
 
 <!-- -->
-    
+
     // set up a message with a ID
-    $.msg({ 
+    $.msg({
       msgID : 1,
       beforeUnblock : function(){
         // do something here
       }
     });
-    
+
     // call to unblock the screen and execute the beforeUnblock event handler with msgID = 1
     $.msg( 'unblock', 3000, 1 );
 
@@ -205,6 +226,8 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
 
     $.msg({ z : 5000 });
 
+
+
 ## Events
 
 #### afterBlock
@@ -214,12 +237,12 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
 <!-- -->
 
     // show msg and replace message content woth a ajax call after block the screen
-    $.msg({ 
+    $.msg({
       autoUnblock : false,
       afterBlock : function(){
         $.getJSON('msg/reply.json', function( rsp ){
           $.msg( 'replace', rsp );
-      } 
+      }
     });
 
 #### beforeUnblock
@@ -227,13 +250,14 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
   - example code
 
 <!-- -->
-    
+
     // clear all input value before screen unblock
-    $.msg({ 
+    $.msg({
       beforeUnblock : function(){
         $( 'input' ).val( '' );
-      } 
+      }
     });
+
 
 
 ## Methods
@@ -244,7 +268,7 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
   - example code
 
 <!-- -->
-    
+
     // use new-cooler-theme for all messages
     $.msg( 'overwriteGlobal', 'klass', 'new-cooler-theme' );
 
@@ -254,7 +278,7 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
   - example code
 
 <!-- -->
-    
+
     $.msg( 'replace', '<p>This is the replaced content</>' );
 
 #### unblock
@@ -263,11 +287,15 @@ This is a simple jQuery plugin to show messages. The styles are all in jquery.ms
   - example code
 
 <!-- -->
-    
+
     $.msg( 'unblock', 3000, 1 );
+
+
 
 ## Theme
 All styles are separate from js files in jquery.msg.css. Default themes use [css3pie](http://css3pie.com/) to apply border-radius and box-shadow to IE. You can easily edit or add your custom theme.
+
+
 
 #### Default HTML layout
 
@@ -276,15 +304,8 @@ All styles are separate from js files in jquery.msg.css. Default themes use [css
       <div id="jquery-msg-content" class="jquery-msg-content" style="position:absolute;">
         Please wait...
       </div>
-    </div> 
+    </div>
 
-## Demo
- - Please see demo.html
- - Online version please take a look at [this](http://dreamerslab.com/demos/jquery-blockui-alternative-with-jquery-msg-plugin)
-
-## Documentation
-  - There is a syntax highlight version, please see [this post](http://dreamerslab.com/blog/en/jquery-blockui-alternative-with-jquery-msg-plugin/)
-  - For chinese version please go [here](http://dreamerslab.com/blog/tw/jquery-blockui-alternative-with-jquery-msg-plugin/)
 
 
 ## License

@@ -1,7 +1,7 @@
 /*! Copyright 2011, Ben Lin (http://dreamerslab.com/)
 * Licensed under the MIT License (LICENSE.txt).
 *
-* Version: 1.0.6
+* Version: 1.0.7
 *
 * Requires: 
 * jQuery 1.3.0+, 
@@ -21,7 +21,7 @@
   autoUnblock,
 
   // a global var to store the beforeUnblock event handler for each msg
-  beforeUnblock = [ function(){} ];
+  beforeUnblock = [ function(){}];
 
   // the jquery plugin
   $.msg = function(){
